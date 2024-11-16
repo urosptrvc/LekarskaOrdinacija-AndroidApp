@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "895584239163",
+    "project_id": "lekarskaordinacijamobapp",
+    "storage_bucket": "lekarskaordinacijamobapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895584239163:android:14c1b194820fa575a8a61e",
+        "android_client_info": {
+          "package_name": "com.example.lekarskaordinacija"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ97u5OIpGOt_fDGQxU3hm9-i86UKrmH0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
