@@ -13,7 +13,7 @@
         android:theme="@style/Theme.LekarskaOrdinacija"
         tools:targetApi="31">
         <activity
-            android:name=".IntroActivity"
+            android:name=".Activity.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,29 +22,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".AccountActivity"
+            android:name=".Activity.AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Activity.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".TopDoctorsActivity"
+            android:name=".Activity.TopDoctorsActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailActivity"
+            android:name=".Activity.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".BaseActivity"
+            android:name=".Activity.BaseActivity"
             android:exported="false" />
     </application>
 
