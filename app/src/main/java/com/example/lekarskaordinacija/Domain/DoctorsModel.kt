@@ -4,30 +4,30 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class DoctorsModel(
-    val Address:String="",
-    val Biography:String="",
-    val Id:Int=0,
-    val Name:String="",
-    val Picture:String="",
-    val Special:String="",
-    val Experiese:Int=0,
-    val Location:String="",
-    val Mobile:String="",
-    val patients:String="",
-): Parcelable {
+    val Address: String = "",
+    val Biography: String = "",
+    val Id: Int = 0,
+    val Name: String = "",
+    val Picture: String = "",
+    val Special: String = "",
+    val Expriense: Int = 0,
+    val Location: String = "",
+    val Mobile: String = "",
+    val patients: String = "",
+) : Parcelable {
+
     constructor(parcel: Parcel) : this(
-        parcel.readString().toString(),
-        parcel.readString().toString(),
+        parcel.readString() ?: "",         // Ako je null, koristi prazan string
+        parcel.readString() ?: "",
         parcel.readInt(),
-        parcel.readString().toString(),
-        parcel.readString().toString(),
-        parcel.readString().toString(),
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
         parcel.readInt(),
-        parcel.readString().toString(),
-        parcel.readString().toString(),
-        parcel.readString().toString(),
-    ) {
-    }
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: ""
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(Address)
@@ -36,7 +36,7 @@ data class DoctorsModel(
         parcel.writeString(Name)
         parcel.writeString(Picture)
         parcel.writeString(Special)
-        parcel.writeInt(Experiese)
+        parcel.writeInt(Expriense)
         parcel.writeString(Location)
         parcel.writeString(Mobile)
         parcel.writeString(patients)
@@ -55,5 +55,4 @@ data class DoctorsModel(
             return arrayOfNulls(size)
         }
     }
-
 }

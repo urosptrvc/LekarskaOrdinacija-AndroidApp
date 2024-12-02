@@ -1,21 +1,48 @@
 package com.example.lekarskaordinacija.Activity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
+import com.example.lekarskaordinacija.Domain.DoctorsModel
 import com.example.lekarskaordinacija.R
+import com.example.lekarskaordinacija.databinding.ActivityDetailBinding
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity() {
+    private lateinit var binding:ActivityDetailBinding
+    private lateinit var item:DoctorsModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_detail)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding=ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        getBundle()
+    }
+
+
+    private fun getBundle(){
+        item = intent.getParcelableExtra("object") !!
+
+
+
+        binding.apply {
+            titleTxt.text=item.Name
+            specialTxt.text=item.Special
+            bioTxt.text=item.Biography
+
+            backBtn.setOnClickListener{ finish()}
+
+
+            Glide.with(this@DetailActivity)
+                .load(item.Picture)
+                .into(img)
+
         }
     }
 }

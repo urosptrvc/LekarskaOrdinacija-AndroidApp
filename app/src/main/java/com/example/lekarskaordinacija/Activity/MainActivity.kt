@@ -1,6 +1,7 @@
 package com.example.lekarskaordinacija.Activity
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
@@ -16,7 +17,7 @@ import com.example.lekarskaordinacija.R
 import com.example.lekarskaordinacija.ViewModel.MainViewModel
 import com.example.lekarskaordinacija.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel = MainViewModel()
 
@@ -38,6 +39,10 @@ class MainActivity : AppCompatActivity() {
                 progressBarTopDoctors.visibility=View.GONE
             })
             viewModel.loadDoctors()
+
+            doctorListTxt.setOnClickListener{
+                startActivity(Intent(this@MainActivity, TopDoctorsActivity::class.java))
+            }
         }
     }
 
