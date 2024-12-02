@@ -23,24 +23,28 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initCategory()
         initTopDoctors()
-        }
+    }
 
     private fun initTopDoctors() {
         binding.apply {
-            progressBarTopDoctors.visibility=View.VISIBLE
+            progressBarTopDoctors.visibility = View.VISIBLE
             viewModel.doctors.observe(this@MainActivity, Observer {
-                recyclerViewTopDoctor.layoutManager=LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
-                recyclerViewTopDoctor.adapter=TopDoctorAdapter(it)
-                progressBarTopDoctors.visibility=View.GONE
+                recyclerViewTopDoctor.layoutManager = LinearLayoutManager(
+                    this@MainActivity,
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+                recyclerViewTopDoctor.adapter = TopDoctorAdapter(it)
+                progressBarTopDoctors.visibility = View.GONE
             })
             viewModel.loadDoctors()
 
-            doctorListTxt.setOnClickListener{
+            doctorListTxt.setOnClickListener {
                 startActivity(Intent(this@MainActivity, TopDoctorsActivity::class.java))
             }
         }
@@ -49,10 +53,15 @@ class MainActivity : BaseActivity() {
     private fun initCategory() {
         binding.progressBarCategory.visibility = View.VISIBLE
         viewModel.category.observe(this, Observer {
-            binding.viewCategory.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+            binding.viewCategory.layoutManager = LinearLayoutManager(
+                this@MainActivity,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
             binding.viewCategory.adapter = CategoryAdapter(it)
-            binding.progressBarCategory.visibility=View.GONE
+            binding.progressBarCategory.visibility = View.GONE
         })
         viewModel.loadCategory()
     }
 }
+

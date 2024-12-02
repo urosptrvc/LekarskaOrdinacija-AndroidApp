@@ -4,6 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.lekarskaordinacija.Fragment.AccountFragment
+import com.example.lekarskaordinacija.Fragment.HomeFragment
+import com.example.lekarskaordinacija.Fragment.SettingsFragment
+import com.example.lekarskaordinacija.R
 import com.example.lekarskaordinacija.databinding.ActivityBaseBinding
 
 open class BaseActivity : AppCompatActivity() {
@@ -22,26 +27,38 @@ open class BaseActivity : AppCompatActivity() {
 
         // Postavi klik događaje za navigaciju
         setupBottomNavigation()
+
+        // Ako je ovo prvi put da se učitava, prikazujemo HomeFragment
+        if (savedInstanceState == null) {
+            replaceFragment(HomeFragment())
+        }
     }
 
     private fun setupBottomNavigation() {
-        // Koristi binding za pristup elementima
-        binding.homeBtn.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            overridePendingTransition(0, 0) // Bez animacije
-        }
-
-        binding.settingsBtn.setOnClickListener {
-            val intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
-            overridePendingTransition(0, 0) // Bez animacije
-        }
-
-        binding.accountBtn.setOnClickListener {
-            val intent = Intent(this, AccountActivity::class.java)
-            startActivity(intent)
-            overridePendingTransition(0, 0) // Bez animacije
+        val bottomNavigationView = binding.bottomNavigationView
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    replaceFragment(HomeFragment())
+                    true
+                }
+                R.id.settings -> {
+                    replaceFragment(SettingsFragment())
+                    true
+                }
+                R.id.account -> {
+                    replaceFragment(AccountFragment())
+                    true
+                }
+                else -> false
+            }
         }
     }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.contentFrame, fragment)
+            .commit()
+    }
 }
+
