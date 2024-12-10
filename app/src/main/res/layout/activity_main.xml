@@ -198,10 +198,9 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <FrameLayout
+                android:id="@+id/contentFrame"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/contentFrame">
-            </FrameLayout>
+                android:layout_height="match_parent"></FrameLayout>
         </LinearLayout>
     </ScrollView>
 
