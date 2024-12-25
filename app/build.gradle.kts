@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-
+    // Existing implementations
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -49,9 +49,44 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.database)
     implementation(libs.firebase.auth)
+    implementation(libs.glide)
+
+    // Testing dependencies
+    // JUnit
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(libs.glide)
+    // Espresso
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.espresso.intents)
+
+    // Mockito for unit testing
+    testImplementation("org.mockito:mockito-core:4.5.1")
+    testImplementation("org.mockito:mockito-inline:4.5.1")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
+
+    // AndroidX Test Core library
+    testImplementation("androidx.test:core:1.5.0")
+    androidTestImplementation("androidx.test:core:1.5.0")
+
+    // AndroidX Test Rules library
+    androidTestImplementation("androidx.test:rules:1.5.0")
+
+    // AndroidX Test Runner library
+    androidTestImplementation("androidx.test:runner:1.5.0")
+
+    // Kotlin Coroutines Test
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+
+    // AndroidX Arch Core Testing
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+
+    // Mockk for alternative mocking (optional, but powerful)
+    testImplementation("io.mockk:mockk:1.13.5")
+
+    testImplementation ("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+
+    // Hamcrest for additional matchers
+    testImplementation("org.hamcrest:hamcrest-library:2.2")
+    androidTestImplementation(libs.androidx.core.testing)
 }

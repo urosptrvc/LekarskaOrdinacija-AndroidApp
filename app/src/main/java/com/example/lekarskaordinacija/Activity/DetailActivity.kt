@@ -14,7 +14,7 @@ import com.example.lekarskaordinacija.R
 import com.example.lekarskaordinacija.databinding.ActivityDetailBinding
 
 class DetailActivity : BaseActivity() {
-    private lateinit var binding:ActivityDetailBinding
+    lateinit var binding:ActivityDetailBinding
     private lateinit var item:DoctorsModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class DetailActivity : BaseActivity() {
     }
 
 
-    private fun getBundle(){
+    fun getBundle(){
         item = intent.getParcelableExtra("object") !!
 
 
